@@ -20,7 +20,7 @@
                 <a href="/service2">Service2</a> 
             -->
             <a href="index.html">Home</a>
-            <a href="service1.html">Service1</a>
+            <a href="service1.html">CRUD</a>
             <a href="service2.html">Service2</a>
         </div>
         <div class="logreg-container">
@@ -30,16 +30,52 @@
             </div>
         </div>
     </div>
+
+    <!-- 修改開始：更新和搜尋功能 -->
+    <div class="flex-main">
+        <div class="main-text">
+            <h1>CRUD Operations</h1>
+        </div>
+        <div class="container">
+            <!-- 搜尋數據表單 -->
+            <div class="content">
+                <h2>Search Order</h2>
+                <form id="searchForm">
+                    <input type="text" id="searchInput" placeholder="Search by Order ID">
+                    <button type="submit">Search</button>
+                </form>
+                <div id="searchResults"></div>
+            </div>
+
+            <!-- 更新數據表單 -->
+            <div class="content">
+                <h2>Update Order</h2>
+                <!-- 先搜尋ID -->
+                <form id="findOrderForm">
+                    <input type="text" id="findOrderId" placeholder="Enter Order ID to find">
+                    <button type="submit">Find Order</button>
+                </form>
+                <div id="orderDetails" style="display: none;">
+                    <!-- ID存在後顯示更新表單 -->
+                    <form id="updateForm">
+                        <input type="text" id="updateInputModel" placeholder="Enter Bike Model">
+                        <input type="text" id="updateInputQuantity" placeholder="Enter Quantity">
+                        <input type="text" id="updateInputAmount" placeholder="Enter Amount">
+                        <button type="submit">Update</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- 修改結束 -->
+    
     <div class="flex-position">
         <div class="title">
             <p>temp</p>
         </div>
     </div>
-    <div class="flex-position">
-        <div class="title">
-            <p>temp</p>
-        </div>
-    </div>
+
+
     <div class="short-thick-line"></div>
     <div class="bottom-text">
         <p>© 2024 Abner Den</p>
