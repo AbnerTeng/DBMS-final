@@ -1,15 +1,14 @@
 <!DOCTYPE html>
 <html lang="en">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Image Processing Results</title>
-</head>
+  </head>
 
-<body>
+  <body>
     <h1>Image Processing Complete!</h1>
-    <img src="{{ url_for('static', filename=output) }}" alt="Result Image">
-</body>
-
+    <img src="{{ url_for('static', filename=output) }}" alt="Result Image" />
+    <p>{{result}}</p>
+  </body>
 </html>
