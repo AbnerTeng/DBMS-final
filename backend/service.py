@@ -55,7 +55,11 @@ def new():
     
     
     cursor = g.db.cursor()
-    
+    cursor.execute("SELECT customer_id FROM customers WHERE customer_id = ?;", (customer_id,))
+    customer_search = cursor.fetchone()
+    if customer_search == None:
+        result = "您的帳號不存在，請先創建帳戶再進行訂購"
+        return render_template('result.html',result = result)
     product_id = products_id.split(',')
     quantity = quantities.split(',')
     arr =[]
