@@ -66,7 +66,7 @@ def new():
         if stock_quantity >= int(quantity[i]):
             arr.append(product_id[i])
             remain_quantity = stock_quantity - int(quantity[i])
-            cursor.execute("UPDATE stocks SET quantity = ? WHERE product_id = ?;", (str(remain_quantity), product_id[i]))
+            cursor.execute("UPDATE stocks SET quantity = ? WHERE product_id = ? AND store_id = ?;", (str(remain_quantity), product_id[i],store_id))
             cursor.execute("SELECT list_price from products WHERE product_id = ?;",(product_id[i],))     
             list_price = float(cursor.fetchone()[0])
             cost +=  int(quantity[i]) * list_price
