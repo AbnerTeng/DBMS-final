@@ -9,16 +9,13 @@
     <script src="../static/js/scripts.js" defer></script>
 </head>
 
+
 <body>
     <div class="topbar">
         <img src="" width="80px" height="80px" alt="Log">
-        <p> Bike Store operation site </p>
+        <p>Bike Store operation site</p>
         <div class="menu">
-            <!-- path for flask api
-                <a href="/">Home</a>
-                <a href="/service1">service1</a>
-                <a href="/service2">Service2</a> 
-            -->
+            <!-- path for flask api -->
             <a href="index.html">Home</a>
             <a href="crud.html">CRUD</a>
             <a href="dashboard.html">Dashboard</a>
@@ -31,7 +28,6 @@
         </div>
     </div>
 
-    <!-- 修改開始：更新和搜尋功能 -->
     <div class="flex-main">
         <div class="main-text">
             <h1>CRUD Operations</h1>
@@ -65,16 +61,61 @@
                     </form>
                 </div>
             </div>
+
+            <!-- 新增訂單 -->
+            <div class="content">
+                <h2>Create New Order</h2>
+                <form id="orderForm">
+                    <label for="customer_id">Customer ID:</label>
+                    <input type="text" id="customer_id" name="customer_id" required><br>
+                    <button type="button" onclick="addItems()">Add Items</button><br>
+                    <div id="itemInputs" style="margin-top: 20px;">
+                        <!-- 動態添加商品項的容器 -->
+                    </div>
+                    <label for="discount">Discount:</label>
+                    <input type="text" id="discount" name="discount"><br>
+                    <button type="submit">Submit Order</button>
+                </form>
+                <!-- 新客戶信息表單，初始時隱藏 -->
+                <div id="newCustomerForm" style="display: none; margin-top: 20px;">
+                    <h2>New Customer Information</h2>
+                    <label for="first_name">First Name:</label>
+                    <input type="text" id="first_name" name="first_name" required><br>
+                    <label for="last_name">Last Name:</label>
+                    <input type="text" id="last_name" name="last_name" required><br>
+                    <label for="phone">Phone:</label>
+                    <input type="text" id="phone" name="phone" required><br>
+                    <label for="email">Email:</label>
+                    <input type="email" id="email" name="email" required><br>
+                    <label for="street">Street:</label>
+                    <input type="text" id="street" name="street" required><br>
+                    <label for="city">City:</label>
+                    <input type="text" id="city" name="city" required><br>
+                    <label for="state">State:</label>
+                    <input type="text" id="state" name="state" required><br>
+                    <label for="zip_code">Zip Code:</label>
+                    <input type="text" id="zip_code" name="zip_code" required><br>
+                    <button type="button" onclick="submitNewCustomer()">Create Customer and Submit Order</button>
+                </div>
+            </div>
+
+            <!-- 刪除訂單 -->
+            <div class="content">
+                <h2>Delete Order</h2>
+                <form id="deleteOrderForm">
+                    <label for="order_id">Order ID:</label>
+                    <input type="text" id="order_id" name="order_id" required><br>
+                    <button type="submit">Delete Order</button>
+                </form>
+            </div>
         </div>
     </div>
-    <!-- 修改結束 -->
 
     <div class="flex-position">
         <div class="title">
             <p>temp</p>
         </div>
     </div>
-
 
     <div class="short-thick-line"></div>
     <div class="bottom-text">
