@@ -97,8 +97,6 @@ database.commit()
 data_flow.to_sql('stocks', database, if_exists='replace', index=False)
 print("成功存入stocks")
 cursor.execute("SELECT * from stocks")
-test = cursor.fetchall()
-print(test)
 #///////////////////////////////////////////////////////////////////////
 
 
