@@ -10,7 +10,7 @@
 
   <body>
     <div class="topbar">
-      <img src="" width="80px" height="80px" alt="Log" />
+      <!-- <img src="" width="80px" height="80px" alt="Log" />-->
       <p>Bike Store operation site</p>
       <div class="menu">
         <!-- path for flask api
@@ -19,8 +19,10 @@
                 <a href="/service2">Service2</a> 
             -->
         <a href="index.html">Home</a>
-        <a href="service1.html">Service1</a>
-        <a href="service2.html">Service2</a>
+        <a href="dashboard.html">Dashboard</a>
+        <a href="delete.html">Delete Order</a>
+        <a href="update.html">Update Order</a>
+        <a href="update_order_item.html">Update Order Item</a>
       </div>
       <div class="logreg-container">
         <div>
@@ -31,64 +33,61 @@
     </div>
     <div class="flex-position">
       <div class="title">
-        <p>temp</p>
-      </div>
-    </div>
-    <div class="flex-position">
-      <div class="title">
-        <p>temp</p>
+        <p>New Order</p>
       </div>
     </div>
     <form action="/new_tackle" method="post">
-      <div>
-        <label for="customer_id">customer_id :</label>
-        <input type="text" id="customer_id" name="customer_id" />
+      <div class="flex-position">
+          <div class="form-group">
+              <label for="customer_id">customer_id :</label>
+              <input type="text" id="customer_id" name="customer_id" />
+          </div>
+          <div class="form-group">
+              <label for="order_status">order_status :</label>
+              <input type="text" id="order_status" name="order_status" />
+          </div>
+          <div class="form-group">
+              <label for="order_date">order_date :</label>
+              <input type="date" id="order_date" name="order_date" />
+          </div>
+          <div class="form-group">
+              <label for="required_date">required_date :</label>
+              <input type="date" id="required_date" name="required_date" />
+          </div>
+          <div class="form-group">
+              <label for="shipped_date">shipped_date :</label>
+              <input type="date" id="shipped_date" name="shipped_date" />
+          </div>
+          <div class="form-group">
+              <label for="store_id">store_id :</label>
+              <input type="text" id="store_id" name="store_id" />
+          </div>
+          <div class="form-group">
+              <label for="staff_id">staff_id :</label>
+              <input type="text" id="staff_id" name="staff_id" />
+          </div>
+          <div class="form-group">
+              <label for="product_id">product_id :</label>
+              <input type="text" id="product_id" name="product_id" placeholder="若有多項產品請以,分隔"/>
+          </div>
+          <div class="form-group">
+              <label for="quantity">quantity :</label>
+              <input type="text" id="quantity" name="quantity" placeholder="若有多項產品請以,分隔"/>
+          </div>
+          <div class="form-group">
+              <label for="discount">discount :</label>
+              <input type="text" id="discount" name="discount" />
+          </div>
+
       </div>
-      <div>
-        <label for="order_status">order_status :</label>
-        <input type="text" id="order_status" name="order_status" />
-      </div>
-      <div>
-        <label for="order_date">order_date :</label>
-        <input type="date" id="order_date" name="order_date" />
-      </div>
-      <div>
-        <label for="required_date">required_date :</label>
-        <input type="date" id="required_date" name="required_date" />
-      </div>
-      <div>
-        <label for="shipped_date">shipped_date :</label>
-        <input type="date" id="shipped_date" name="shipped_date" />
-      </div>
-      <div>
-        <label for="store_id">store_id :</label>
-        <input type="text" id="store_id" name="store_id" />
-      </div>
-      <div>
-        <label for="staff_id">staff_id :</label>
-        <input type="text" id="staff_id" name="staff_id" />
-      </div>
-      <div>
-        <label for="product_id">product_id :</label>
-        <input type="text" id="product_id" name="product_id" />
-        <label for="product_id">(若有多項產品請以,分隔)</label>
-      </div>
-      <div>
-        <label for="quantity">quantity :</label>
-        <input type="text" id="quantity" name="quantity" />
-        <label for="quantity">(若有多項產品請以,分隔)</label>
-      </div>
-      <div>
-        <label for="discount">discount :</label>
-        <input type="text" id="discount" name="discount" />
-      </div>
-      <div>
+      <div class="container">
         <button type="submit">Submit Order</button>
-      </div>
-    </form>
+    </div>
+  </form>
     <div class="short-thick-line"></div>
     <div class="bottom-text">
       <p>© 2024 Abner Den</p>
     </div>
   </body>
 </html>
+
