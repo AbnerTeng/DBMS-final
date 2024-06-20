@@ -294,7 +294,7 @@ def create_database(db_path: str = "bike.db") -> None:
 #         # 如果数据库已经存在，返回 None
 #         return None
 
-create_database()
+# create_database()
 db, db_cursor = get_db_connection()
 
 @app.route('/dashboard')
