@@ -6,12 +6,32 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bike store operation site</title>
     <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .flex-container a {
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        .flex-container a:hover {
+            background-color: #ddd;
+        }
+    </style>
 </head>
 
 <body>
     <div class="topbar">
         <img src="" width="80px" height="80px" alt="Log">
-        <p> Bike store operation site </p>
+        <p>Bike store operation site</p>
         <div class="menu">
             <a href="/">Home</a>
             <a href="/dashboard">Dashboard</a>
@@ -20,7 +40,6 @@
             <a href="/search">搜尋訂單</a>
             <a href="/update">更新訂單</a>
             <a href="/update_order_item">更新訂單項目</a>
-
         </div>
         <div class="logreg-container">
             <div>
@@ -30,13 +49,10 @@
         </div>
     </div>
     <div class="flex-main">
-        <div class="main-text">
-            <h1>腳踏車銷售系統</h1>
-        </div>
-        <div class="container">
-            <div class="content">
-                <h2>請點選右上角的功能進行 CRUD 四個功能!</h2>
-            </div>
+        <div class="flex-container">
+            <a href="/search_bycustomerID">Search by Customer ID</a>
+            <a href="/search_manager">Search Manager</a>
+            <a href="/search_sales">Search Sales</a>
         </div>
     </div>
     <div class="short-thick-line"></div>
@@ -46,3 +62,4 @@
 </body>
 
 </html>
+

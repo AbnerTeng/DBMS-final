@@ -1,6 +1,12 @@
 import os
 from flask import Flask, request, render_template, g
+import shutil
 import sqlite3
+import csv
+from .constants import (
+    CSV_FILES, QUERY_1, QUERY_2, QUERY_5, QUERY_6
+)
+from .utils import tup2list, execute_sql_file
 
 current_dir = os.path.dirname(os.path.realpath(__file__))
 
@@ -16,7 +22,19 @@ app = Flask(__name__, static_folder=static_folder, template_folder=template_fold
 
 # 全局變量
 id = 1616
+
+initial_db_path = os.path.join(current_dir, 'bike.db')
 database = os.path.join(current_dir, 'bikestore.db')
+
+# 将初始数据库文件复制到工作目录中
+def reset_database():
+    if os.path.exists(database):
+        os.remove(database)
+    shutil.copyfile(initial_db_path, database)
+
+# 在应用启动时重置数据库
+reset_database()
+
 
 def get_db_connection():
     conn = sqlite3.connect(database)
@@ -183,6 +201,100 @@ def update_order_item():
     result = f"訂單項目 {order_id}-{item_id} 已成功更新"
     
     return render_template('result.html', result=result)
+
+###
+@app.route('/dashboard')
+def dashboard() -> render_template:
+    """
+    Query datas to show on the dashboard
+    """
+    conn = sqlite3.connect(database)
+    full_customers = conn.execute(QUERY_1).fetchone()[0]
+    full_orders = conn.execute(QUERY_2).fetchone()[0]
+    order_by_category = tup2list(
+        conn.execute(QUERY_5).fetchall()
+    )
+    order_by_brand = tup2list(
+        conn.execute(QUERY_6).fetchall()
+    )
+    conn.close()
+
+    return render_template(
+        "dashboard.html",
+        full_customers = full_customers,
+        full_orders = full_orders,
+        order_by_category = order_by_category,
+        order_by_brand = order_by_brand
+    )
+
+@app.route("/search")
+def show_search_order_item():
+    return render_template('search.html')
+
+@app.route('/search_bycustomerID', methods=['GET', 'POST'])
+def orders():
+    """
+    Get orders by customer ID
+    """
+    msg = "msg"
+    if request.method == "POST":
+        con = sqlite3.connect(database)
+
+        con.row_factory = sqlite3.Row
+        cursor = con.cursor()
+        customer_id = int(request.form.get("search_order"))
+        print(f"Searching for customer_id: {customer_id}")
+        cursor.execute("SELECT * FROM orders WHERE customer_id = ?", (customer_id,))
+        _orders = cursor.fetchall()
+
+        if _orders:
+            msg = "查詢結果如下！"
+            return render_template("result_customerID.html", order_search=_orders, msg=msg)
+
+        else:
+            msg = "No results found"
+            return render_template("result_customerID.html", msg=msg)
+
+    else:
+        return render_template("search_bycustomerID.html")
+
+@app.route("/search_manager")
+def manager():
+    """
+    Get staffs by manager ID
+    """
+    con = sqlite3.connect(database)
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    # cur = conn.cursor()
+    cur.execute("SELECT * FROM staffs WHERE manager_id = 1")
+    staff= cur.fetchall()
+    return render_template("search_manager.html", staff_search=staff)
+
+@app.route("/search_sales")
+def sales():
+    """
+    Get sales by month and category
+    """
+    con = sqlite3.connect(database)
+    con.row_factory = sqlite3.Row
+    cur = con.cursor()
+    cur.execute(
+        """
+            SELECT strftime('%m', o.order_date) AS order_month,
+            p.category_id, c.category_name,
+            ROUND(AVG(oi.quantity*oi.list_price*(1-oi.discount)),1) AS price
+            FROM order_items oi 
+            JOIN products p ON oi.product_id = p.product_id 
+            JOIN orders o ON oi.order_id = o.order_id 
+            JOIN categories c ON c.category_id = p.category_id 
+            GROUP BY order_month, p.category_id
+        """
+    )
+    _sales = cur.fetchall()
+
+    return render_template("search_sales.html", sales_search=_sales)
+###
 
 if __name__ == "__main__":
     app.run(debug=True)
