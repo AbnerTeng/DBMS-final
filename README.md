@@ -19,6 +19,10 @@ Project Member
 
 [Project description pdf file](https://drive.google.com/file/d/1IpZ-BegQSO7tb2QejDUOQeI0xI5H6CnF/view?usp=sharing)
 
+## Final Report
+
+[Final report pdf file](https://drive.google.com/file/d/1Txs6O0NBaDtkAHZjLC5yF_eEYu9ze8GW/view?usp=sharing)
+
 ## System Architecture
 
 ```{.bash}
