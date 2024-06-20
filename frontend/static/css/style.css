@@ -292,3 +292,30 @@ th {
     width: 50%;
     float: left;
 }
+
+.form-group {
+    display: flex;
+    justify-content: flex-start; 
+    align-items: center; 
+    margin-bottom: 1rem; 
+    width: 50%; 
+}
+
+.form-group label {
+    margin-right: 10px; 
+}
+
+.flex-position {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding-top: 80px;
+}
+
+form {
+    width: 100%; 
+    max-width: 600px; 
+    margin: 0 auto;
+    text-align: left; 
+}
