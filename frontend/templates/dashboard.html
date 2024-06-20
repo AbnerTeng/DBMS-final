@@ -14,7 +14,7 @@
 
 <body>
     <div class="topbar">
-        <img src="" width="80px" height="80px" alt="Log">
+        <!-- <img src="" width="80px" height="80px" alt="Log"> -->
         <p> Bike store operation site </p>
         <div class="menu">
             <!-- path for flask api
@@ -43,39 +43,33 @@
                 <div class="col-sm-3">
                     <div class="well">
                         <h4>Customers</h4>
-                        <p>5,000</p> <!-- TODO: Need to connect to DB-->
+                        <p>{{ full_customers }}</p>
                     </div>
                 </div>
                 <div class="col-sm-3">
                     <div class="well">
-                        <h4>Stocks quantity</h4>
-                        <p>10,000</p> <!-- TODO: Need to connect to DB-->
+                        <h4>Orders</h4>
+                        <p>{{ full_orders }}</p>
                     </div>
                 </div>
             </div>
             <div class="row">
                 <div class="col-sm-3">
-                    <h4>Quantity of Each Categories</h4>
-                    <select id="BarCategoryselect" class="big-input">
-                        <option value="all">All categories</option>
-                        <option value="Category1">Category1</option>
-                        <option value="Category2">Category2</option>
-                        <option value="Category3">Category3</option>
-                    </select>
+                    <h4>Orders of Each Categories</h4>
                     <canvas id="Barplot" style="width:90%;max-width:800px"></canvas>
                 </div>
                 <div class="col-sm-3">
-                    <h4>Quantity of Each Categories</h4>
-                    <select id="LineCategoryselect" class="big-input">
-                        <option value="all">All categories</option>
-                        <option value="Category1">Category1</option>
-                        <option value="Category2">Category2</option>
-                        <option value="Category3">Category3</option>
-                    </select>
-                    <canvas id="Lineplot" style="width:90%;max-width:800px"></canvas>
+                    <h4>Orders of Each Brand</h4>
+                    <canvas id="Barplot2" style="width:90%;max-width:800px"></canvas>
                 </div>
             </div>
             <script src="../static/js/chart.js"></script>
+            <script>
+                var barData = {{ order_by_category| safe }};
+                var lineData = {{ order_by_brand| safe }};
+                initializeBarPlot(barData);
+                initializeBarPlot2(lineData);
+            </script>
         </div>
 
         <!-- <div class="horizontal-line"></div> -->
