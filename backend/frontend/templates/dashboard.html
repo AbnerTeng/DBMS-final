@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike store operation site</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/Chart.js/2.9.4/Chart.js">
+    </script>
+    <!-- <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css"> -->
+    <script src="../static/js/scripts.js" defer></script>
+</head>
+
+<body>
+    <div class="topbar">
+        <!-- <img src="" width="80px" height="80px" alt="Log"> -->
+        <p> Bike store operation site </p>
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/new">新增訂單</a>
+            <a href="/delete">刪除訂單</a>
+            <a href="/search">搜尋訂單</a>
+            <a href="/update">更新訂單</a>
+            <a href="/update_order_item">更新訂單項目</a>
+        </div>
+        <div class="logreg-container">
+            <div>
+                <button class="log">Login</button>
+                <button class="reg">Sign up</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-main">
+        <div class="col-sm-9">
+            <div class="well">
+                <h2>Dashboard</h2>
+                <p>Operation monitoring</p>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Customers</h4>
+                        <p>{{ full_customers }}</p>
+                    </div>
+                </div>
+                <div class="col-sm-3">
+                    <div class="well">
+                        <h4>Orders</h4>
+                        <p>{{ full_orders }}</p>
+                    </div>
+                </div>
+            </div>
+            <div class="row">
+                <div class="col-sm-3">
+                    <h4>Orders of Each Categories</h4>
+                    <canvas id="Barplot" style="width:90%;max-width:800px"></canvas>
+                </div>
+                <div class="col-sm-3">
+                    <h4>Orders of Each Brand</h4>
+                    <canvas id="Barplot2" style="width:90%;max-width:800px"></canvas>
+                </div>
+            </div>
+            <script src="../static/js/chart.js"></script>
+            <script>
+                var barData = {{ order_by_category| safe }};
+                var lineData = {{ order_by_brand| safe }};
+                initializeBarPlot(barData);
+                initializeBarPlot2(lineData);
+            </script>
+        </div>
+
+        <!-- <div class="horizontal-line"></div> -->
+    </div>
+    <div class="short-thick-line"></div>
+    <div class="bottom-text">
+        <p>© 2024 Abner Den</p>
+    </div>
+</body>

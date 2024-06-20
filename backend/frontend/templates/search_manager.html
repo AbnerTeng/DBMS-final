@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bike store operation site</title>
+    <link rel="stylesheet" type="text/css" href="../static/css/style.css">
+    <style>
+        .flex-container {
+            display: flex;
+            justify-content: space-around;
+            align-items: center;
+            margin: 20px 0;
+        }
+
+        .flex-container a {
+            padding: 10px 20px;
+            background-color: #f2f2f2;
+            text-decoration: none;
+            border-radius: 5px;
+            color: #000;
+        }
+
+        .flex-container a:hover {
+            background-color: #ddd;
+        }
+
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 20px;
+        }
+
+        table, th, td {
+            border: 2px solid black;
+        }
+
+        th, td {
+            padding: 8px;
+            text-align: left;
+        }
+    </style>
+</head>
+
+<body>
+    <div class="topbar">
+        <img src="" width="80px" height="80px" alt="Log">
+        <p>Bike store operation site</p>
+        <div class="menu">
+            <a href="/">Home</a>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/new">新增訂單</a>
+            <a href="/delete">刪除訂單</a>
+            <a href="/search">搜尋訂單</a>
+            <a href="/update">更新訂單</a>
+            <a href="/update_order_item">更新訂單項目</a>
+        </div>
+        <div class="logreg-container">
+            <div>
+                <button class="log" onclick="window.location.href='login.html'">Login</button>
+                <button class="reg" onclick="window.location.href='signup.html'">Sign up</button>
+            </div>
+        </div>
+    </div>
+    <div class="flex-main">
+        <div class="main-text">
+            <h1>主管聯絡方式</h1>
+        </div>
+        <div class="flex-container">
+            <table>
+                <thead>
+                    <tr>
+                        <th>staff_id</th>
+                        <th>first_name</th>
+                        <th>last_name</th>
+                        <th>email</th>
+                        <th>phone</th>
+                        <th>active</th>
+                        <th>store_id</th>
+                        <th>manager_id</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    {% for staff in staff_search %}
+                    <tr>
+                        <td>{{staff["staff_id"]}}</td>
+                        <td>{{staff["first_name"]}}</td>
+                        <td>{{staff["last_name"]}}</td>
+                        <td>{{staff["email"]}}</td>
+                        <td>{{staff["phone"]}}</td>
+                        <td>{{staff["active"]}}</td>
+                        <td>{{staff["store_id"]}}</td>
+                        <td>{{staff["manager_id"]}}</td>
+                    </tr>
+                    {% endfor %}
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="short-thick-line"></div>
+    <div class="bottom-text">
+        <p>© 2024 Abner Den</p>
+    </div>
+</body>
+
+</html>
