@@ -21,8 +21,9 @@ Project Member
 
 ## Final Report & Slides
 
-[Final report pdf file](https://drive.google.com/file/d/1Txs6O0NBaDtkAHZjLC5yF_eEYu9ze8GW/view?usp=sharing)
-[Final slides pdf file](https://drive.google.com/file/d/1Kh4aXQiPYj2qCg2EKAl2d72PkHMlHqkE/view?usp=sharing)
+- [Final report pdf file](https://drive.google.com/file/d/1Txs6O0NBaDtkAHZjLC5yF_eEYu9ze8GW/view?usp=sharing)
+- [Final slides pdf file](https://drive.google.com/file/d/1Kh4aXQiPYj2qCg2EKAl2d72PkHMlHqkE/view?usp=sharing)
+
 ## System Architecture
 
 ```{.bash}
